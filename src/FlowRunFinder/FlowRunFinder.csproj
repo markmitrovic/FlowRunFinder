@@ -8,14 +8,14 @@
     <AssemblyTitle>Flow Run Finder</AssemblyTitle>
     <AssemblyDescription>Find and navigate to Power Automate cloud flow runs directly from XrmToolBox.</AssemblyDescription>
     <AssemblyProduct>Flow Run Finder</AssemblyProduct>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
     <Platforms>AnyCPU</Platforms>
 
     <!-- NuGet / XrmToolBox Tool Library packaging -->
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>FlowRunFinder</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <Authors>Mark Mitrovic</Authors>
     <Company>Mark Mitrovic</Company>
     <PackageDescription>Find and open Power Automate cloud flow runs directly from XrmToolBox. Filter by date range, view trigger output columns (Case fields, etc.) and jump straight to the run in Power Automate with one click.</PackageDescription>
@@ -24,12 +24,15 @@
     <RepositoryUrl>https://github.com/markmitrovic/FlowRunFinder</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>Add package icon and embedded README.</PackageReleaseNotes>
+    <PackageReleaseNotes>Updated to FlowRunFinderV2.Core 1.1.0 with interactive browser authentication, advanced-search progress reporting, and query cancellation.</PackageReleaseNotes>
     <Copyright>Copyright 2026 Mark Mitrovic</Copyright>
   </PropertyGroup>
 
   <!-- XrmToolBox extensibility DLLs - copied into lib\ by build-and-install.ps1 -->
   <ItemGroup>
+    <Reference Include="FlowRunFinderV2.Core">
+      <HintPath>..\..\..\FlowRunFinderV2\src\FlowRunFinderV2\FlowRunFinderV2.Core\bin\Release\netstandard2.0\FlowRunFinderV2.Core.dll</HintPath>
+    </Reference>
     <Reference Include="XrmToolBox.Extensibility">
       <HintPath>lib\XrmToolBox.Extensibility.dll</HintPath>
     </Reference>
@@ -45,11 +48,13 @@
   <!-- Dynamics 365 SDK - still from NuGet -->
   <ItemGroup>
     <PackageReference Include="Microsoft.CrmSdk.CoreAssemblies" Version="9.0.2.49" />
-    <!-- MSAL: silent token acquisition using Windows SSO / persisted cache (no sign-in prompts) -->
-    <PackageReference Include="Microsoft.Identity.Client" Version="4.61.3" />
+    <!-- MSAL: aligned with the V2 Core auth services. -->
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.72.1" />
+    <PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="4.72.1" />
+    <!-- Keep System.Text.Json aligned with the directly referenced V2 Core DLL. -->
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
     <!-- ILRepack: merges MSAL DLLs into FlowRunFinder.dll so the plugin ships as a single file -->
     <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.34.1" PrivateAssets="all" />
   </ItemGroup>
-
 
 </Project>
