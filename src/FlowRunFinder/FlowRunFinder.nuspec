@@ -2,10 +2,10 @@
 <package>
   <metadata>
     <id>FlowRunFinder</id>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <title>Flow Run Finder</title>
-    <authors>Mark Mitrovic</authors>
-    <owners>Mark Mitrovic</owners>
+    <authors>Mark Mitrovic, John Yenter-Briars</authors>
+    <owners>Mark Mitrovic, John Yenter-Briars</owners>
     <projectUrl>https://github.com/markmitrovic/FlowRunFinder</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
