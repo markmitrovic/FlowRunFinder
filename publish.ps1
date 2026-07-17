@@ -1,4 +1,4 @@
-# publish.ps1 — Build, pack, and (optionally) push FlowRunFinder to NuGet
+# publish.ps1 - Build, pack, and (optionally) push FlowRunFinder to NuGet
 # Usage:
 #   .\publish.ps1                   # build + pack only
 #   .\publish.ps1 -Push             # build + pack + push to NuGet
@@ -59,5 +59,5 @@ if ($Push) {
     Write-Host "`n--- Pushing to NuGet.org ---"
     & $NugetExe push $Package.FullName $ApiKey -Source https://api.nuget.org/v3/index.json
     if ($LASTEXITCODE -ne 0) { throw "nuget push failed." }
-    Write-Host "Done. Package published — allow a few minutes for the Plugin Store to index it."
+    Write-Host "Done. Package published - allow a few minutes for the Plugin Store to index it."
 }
